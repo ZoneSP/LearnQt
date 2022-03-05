@@ -1,6 +1,7 @@
 #include <QCoreApplication>
 #include <QDebug>
 #include <QtGlobal>
+#include <iostream>
 int main(int argc, char *argv[])
 {
     int Loop = 0;
@@ -108,13 +109,58 @@ int main(int argc, char *argv[])
     qDebug()<<" ";
 
     //8. 数值转换与输出
-    //::number(int n, int base = 10)
+    //公有静态函数::number(int n, int base = 10)  公有函数：setNum<需要对象来调用>
     int n = 63;
     qDebug()<<QByteArray::number(n);
     qDebug()<<QByteArray::number(n, 16);
     qDebug()<<QByteArray::number(n, 16).toUpper();
     qDebug()<<QByteArray::number(n, 2);
     qDebug()<<QByteArray::number(n, 8);
+    printf("setNum: \n");
+    QByteArray msg_8;
+    qDebug()<<msg_8.setNum(n,10);
+    qDebug()<<msg_8.setNum(n,16);
+    printf("\n");
+    //9. 字母大小写的转换
+    //.toUpper()  全部转化为大写     .toLower()  全部转化为小写
+
+    //10. 判断是大写还是小写的函数
+    //.isUpper()   .isLower()    ->如果字符数组里有小写的或者大写的，则返回true
+
+    //11. 字符串数值转化为各类数值
+    //toInt(&bool check, 进制)   toFloat()   toDouble()   toFloat和toDouble均只包含两位小数
+    //小数用toInt()全部按0处理
+    QByteArray strInt("1234");
+    bool check;
+    qDebug()<<strInt.toInt(&check, 16);
+    if(check == true)
+    {
+        printf("check is true\n");
+    }
+    else
+    {
+        printf("check is False\n");
+    }
+    qDebug()<<strInt.toInt();
+    printf("以下是小数区域：\n");
+    QByteArray strFloat("1234.5678");
+    qDebug()<<strFloat.toFloat();
+    qDebug()<<strFloat.toDouble();
+    printf("\n");
+
+    //12. QByteArray和char*互转
+    QByteArray msg_9("Hello world");
+    char *data = msg_9.data();  //返回一个指向msg_9的指针,指向第一个字符
+
+    //13. 与字符串QString互转
+    //QString只存储可显示的字符，具体可查阅ASCII码表
+    QString str = QString("hello world");
+    QByteArray arr = str.toLatin1();
+    qDebug()<<arr;
+    QByteArray arr2("HELLOWORLD");
+    QString str2 = arr;
+
+    //14.
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~QByteArray学习区域~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
     return a.exec();
