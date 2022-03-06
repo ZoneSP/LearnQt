@@ -160,7 +160,43 @@ int main(int argc, char *argv[])
     QByteArray arr2("HELLOWORLD");
     QString str2 = arr;
 
-    //14.
+    //14. 判断是否为空
+    //bool isEmpty()
+    QByteArray msg_10;
+    if(msg_10.isEmpty() == true)
+    {
+        qDebug()<<"msg_10 is empty";
+    }
+    else
+    {
+        qDebug()<<"msg_10 is not empty";
+    }
+
+    msg_10.resize(5);
+    msg_10.fill('o');
+    if(msg_10.isEmpty() == true)
+    {
+        qDebug()<<"msg_10 is empty";
+    }
+    else
+    {
+        qDebug()<<"msg_10 is not empty";
+    }
+
+    //15. 向前搜索和向后搜索
+    //int indexOf(const QByteArray &ba, int from = 0)
+    //int indexOf(char ch, int from = 0)
+    //从from位置开始搜索，找到了返回所在位置，找不到返回-1
+    //向后搜索：lastIndexOf
+    QByteArray msg_11("ABCDABEF");
+    int index_check = msg_11.indexOf("AB", 1);
+    qDebug()<<index_check;
+
+    //16. 插入
+    //QByteArray & insert(int i, const QByteArray str)
+    QByteArray msg_12("Coicate");
+    msg_12.insert(2, QByteArray("mmun"));
+    qDebug()<<msg_12;
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~QByteArray学习区域~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
     return a.exec();
